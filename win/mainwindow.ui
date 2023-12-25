@@ -3,7 +3,7 @@
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
   <property name="windowTitle">
-   <string>Azonfox Window</string>
+   <string>Azonfox my Window</string>
   </property>
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>

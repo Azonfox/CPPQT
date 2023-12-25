@@ -170,7 +170,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Azonfox Window", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Azonfox my Window", nullptr));
 #if QT_CONFIG(whatsthis)
         pushButton->setWhatsThis(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><br/></p></body></html>", nullptr));
 #endif // QT_CONFIG(whatsthis)

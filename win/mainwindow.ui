@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>497</width>
+    <height>471</height>
+   </rect>
+  </property>
   <property name="windowTitle">
    <string>Azonfox my Window</string>
   </property>
@@ -101,6 +109,9 @@ color: rgb(165, 29, 45);
       <property name="text">
        <string>CheckBox</string>
       </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
      </widget>
     </item>
     <item row="2" column="3" rowspan="6">
@@ -112,6 +123,9 @@ color: rgb(165, 29, 45);
     </item>
     <item row="1" column="1" colspan="2">
      <widget class="QCommandLinkButton" name="commandLinkButton">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(248, 228, 92);</string>
+      </property>
       <property name="text">
        <string>CommandLinkButton</string>
       </property>
@@ -121,6 +135,9 @@ color: rgb(165, 29, 45);
      <widget class="QRadioButton" name="radioButton">
       <property name="text">
        <string>RadioButton</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
       </property>
      </widget>
     </item>
@@ -149,7 +166,11 @@ color: rgb(165, 29, 45);
      </widget>
     </item>
     <item row="4" column="0" rowspan="2">
-     <widget class="QDial" name="dial"/>
+     <widget class="QDial" name="dial">
+      <property name="styleSheet">
+       <string notr="true">border-top-color: rgb(255, 120, 0);</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>

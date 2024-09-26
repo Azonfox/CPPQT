@@ -59,6 +59,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
+        MainWindow->resize(497, 471);
         MainWindow->setLayoutDirection(Qt::LeftToRight);
         MainWindow->setAutoFillBackground(true);
         centralwidget = new QWidget(MainWindow);
@@ -108,6 +109,7 @@ public:
 
         checkBox = new QCheckBox(centralwidget);
         checkBox->setObjectName(QString::fromUtf8("checkBox"));
+        checkBox->setChecked(true);
 
         gridLayout->addWidget(checkBox, 3, 1, 1, 1);
 
@@ -119,11 +121,13 @@ public:
 
         commandLinkButton = new QCommandLinkButton(centralwidget);
         commandLinkButton->setObjectName(QString::fromUtf8("commandLinkButton"));
+        commandLinkButton->setStyleSheet(QString::fromUtf8("background-color: rgb(248, 228, 92);"));
 
         gridLayout->addWidget(commandLinkButton, 1, 1, 1, 2);
 
         radioButton = new QRadioButton(centralwidget);
         radioButton->setObjectName(QString::fromUtf8("radioButton"));
+        radioButton->setChecked(true);
 
         gridLayout->addWidget(radioButton, 1, 0, 2, 1);
 
@@ -151,6 +155,7 @@ public:
 
         dial = new QDial(centralwidget);
         dial->setObjectName(QString::fromUtf8("dial"));
+        dial->setStyleSheet(QString::fromUtf8("border-top-color: rgb(255, 120, 0);"));
 
         gridLayout->addWidget(dial, 4, 0, 2, 1);
 

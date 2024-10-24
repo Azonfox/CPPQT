@@ -1,0 +1,11 @@
+#!/bin/sh
+clear
+
+# Не работает !!!
+g++ qt1.cpp -o qt1  -I/usr/lib/i386-linux-gnu/qt5/include -L/usr/lib/i386-linux-gnu/qt5/lib -lqui
+
+echo "END QT compile"
+
+./qt1
+#read a
+

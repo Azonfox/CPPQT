@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 9.0.2, 2024-02-17T19:05:35. -->
+<!-- Written by QtCreator 9.0.2, 2024-10-24T17:20:30. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -194,9 +194,8 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">win2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/azfox/PROJECT/QT/win/win.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/azfox/PROJECT/QT/win/win.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/azfox/PROJECT/CPPQT/win/win.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/azfox/PROJECT/CPPQT/win/win.pro</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>

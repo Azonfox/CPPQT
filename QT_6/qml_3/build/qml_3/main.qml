@@ -8,6 +8,7 @@ Window {
     title: qsTr("Hello Андрей!")
 
     Item {
+        id: item1
         width: 300
         height: 150
         Rectangle {
@@ -21,17 +22,6 @@ Window {
             radius: 25
             smooth: true
         }
-
-        Button {
-            x: 233
-            y: 164
-            width: 100
-            height: 30
-            text: "Выход"
-            onClicked: Qt.quit();
-        }
-
-
     }
 
     Text {
@@ -47,4 +37,17 @@ Window {
         font.pixelSize: 22
         color: "green"
     }
+
+    Button {
+      //  x: 233
+      //  y: 164
+        width: 100
+        height: 30
+        text: "Выход"
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.margins: 10
+        onClicked: Qt.quit();
+    }
+
 }

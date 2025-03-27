@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/qml_3">
+    <file alias="qmldir">/home/azfox/PROJECT/CPPQT/QT_6/qml_3/build/qml_3/qmldir</file>
+  </qresource>
+</RCC>
+

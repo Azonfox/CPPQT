@@ -1,0 +1,47 @@
+apt install qml6-*
+установит недостающие пакеты
+
+ДО ЭТОГО
+После удаления QT5 вывод поменялся на ошибки;
+
+azfox@MacDeb:~/PROJECT/CPPQT/QT_6/qml_3$ cmake -B build -DCMAKE_PREFIX_PATH="/usr/lib/qt6; /usr/lib/x86_64-linux-gnu/qt6"
+
+CMake Error at /usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/QmlPlugins/Qt6lottieqtpluginTargets.cmake:102 (message):
+  The imported target "Qt6::lottieqtplugin" references the file
+
+     "/usr/lib/x86_64-linux-gnu/qt6/qml/Qt/labs/lottieqt/liblottieqtplugin.so"
+
+  but this file does not exist.  Possible reasons include:
+
+  * The file was deleted, renamed, or moved to another location.
+
+  * An install or uninstall procedure did not complete successfully.
+
+  * The installation package was faulty and contained
+
+     "/usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/QmlPlugins/Qt6lottieqtpluginTargets.cmake"
+
+  but not all the files it references.
+
+Call Stack (most recent call first):
+  /usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/QmlPlugins/Qt6lottieqtpluginConfig.cmake:61 (include)
+  /usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QmlPlugins.cmake:18 (include)
+  /usr/lib/x86_64-linux-gnu/cmake/Qt6Qml/Qt6QmlConfig.cmake:133 (include)
+  /usr/share/cmake-3.25/Modules/CMakeFindDependencyMacro.cmake:47 (find_package)
+  /usr/lib/x86_64-linux-gnu/cmake/Qt6/QtPublicDependencyHelpers.cmake:108 (find_dependency)
+  /usr/lib/x86_64-linux-gnu/cmake/Qt6Quick/Qt6QuickDependencies.cmake:39 (_qt_internal_find_qt_dependencies)
+  /usr/lib/x86_64-linux-gnu/cmake/Qt6Quick/Qt6QuickConfig.cmake:50 (include)
+  /usr/lib/x86_64-linux-gnu/cmake/Qt6/Qt6Config.cmake:167 (find_package)
+  CMakeLists.txt:9 (find_package)
+
+
+CMake Warning at /usr/lib/x86_64-linux-gnu/cmake/Qt6/Qt6Config.cmake:167 (find_package):
+  Found package configuration file:
+
+    /usr/lib/x86_64-linux-gnu/cmake/Qt6Quick/Qt6QuickConfig.cmake
+
+  but it set Qt6Quick_FOUND to FALSE so package "Qt6Quick" is considered to
+  be NOT FOUND.
+Call Stack (most recent call first):
+  CMakeLists.txt:9 (find_package)
+

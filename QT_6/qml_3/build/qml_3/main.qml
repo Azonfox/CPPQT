@@ -23,9 +23,11 @@ Window {
         }
 
         Button {
-            width: parent.width
-            height: parent.height
-            text: "Quit"
+            x: 233
+            y: 164
+            width: 100
+            height: 30
+            text: "Выход"
             onClicked: Qt.quit();
         }
 

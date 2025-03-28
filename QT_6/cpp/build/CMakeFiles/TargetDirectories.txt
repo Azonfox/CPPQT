@@ -1,0 +1,7 @@
+/home/azfox/PROJECT/CPPQT/QT_6/cpp/build/CMakeFiles/cpp.dir
+/home/azfox/PROJECT/CPPQT/QT_6/cpp/build/CMakeFiles/edit_cache.dir
+/home/azfox/PROJECT/CPPQT/QT_6/cpp/build/CMakeFiles/rebuild_cache.dir
+/home/azfox/PROJECT/CPPQT/QT_6/cpp/build/CMakeFiles/list_install_components.dir
+/home/azfox/PROJECT/CPPQT/QT_6/cpp/build/CMakeFiles/install.dir
+/home/azfox/PROJECT/CPPQT/QT_6/cpp/build/CMakeFiles/install/local.dir
+/home/azfox/PROJECT/CPPQT/QT_6/cpp/build/CMakeFiles/install/strip.dir

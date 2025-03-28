@@ -1,0 +1,11 @@
+#!/bin/sh
+clear
+rm qtcpp
+g++ main.cpp -o qtcpp
+# -I/usr/lib/i386-linux-gnu/qt6/include -L/usr/lib/i386-linux-gnu/qt6/lib -lqui
+
+#echo "END QT compile"
+echo "----------------------------"
+./qtcpp
+read a
+

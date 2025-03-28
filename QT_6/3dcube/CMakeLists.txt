@@ -5,8 +5,8 @@ project(3dcube VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
-find_package(Qt6 REQUIRED COMPONENTS Quick3D Quick3DHelpers)
+#find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
+find_package(Qt6 REQUIRED COMPONENTS Quick Quick3D Quick3DHelpers)
 
 qt_add_executable(app3dcube
     main.cpp

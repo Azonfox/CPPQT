@@ -1,0 +1,22 @@
+#!/bin/sh
+clear
+rm ./build/cpp
+
+echo "=================================="
+echo "    My Build of Cmake-make QT6"
+echo "=================================="
+#echo ""
+
+cmake -B build -DCMAKE_PREFIX_PATH="/usr/lib/qt6; /usr/lib/x86_64-linux-gnu/qt6"
+cd ./build
+make
+
+echo "=================================="
+echo
+echo
+
+./cpp
+cd ..
+
+read a
+

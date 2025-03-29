@@ -6,6 +6,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    // Начинаем с поля ввода
+    ui->lineEdit->setFocus();
 }
 
 MainWindow::~MainWindow()
@@ -34,3 +36,26 @@ void MainWindow::on_colorButton_clicked()
 {
     ui->label_1->setStyleSheet("color: red; font-weight: bold;");
 }
+
+// Проверяем выход из поля (типа Valid VFP):
+//  изменяем надпись и переходим дальше.
+// Далее в UI Designer для editingFinished() стрелкой ставим слот
+// setFocus() для следующего виджета -  кнопки "COLOR",
+// ...или как здесь - программно переставляем Фокус
+void MainWindow::on_lineEdit_editingFinished()
+{
+    // Если ввели "1" даже с пробелами, то
+    // печатаем соотвтетсвующее уведомление
+    // в label_1 и не выходим из поля, попутно
+    // удаляем все лишние пробелы
+    if (ui->lineEdit->text().trimmed()=="1") {
+        ui->label_1->setText("Ошибка!\nВведено 1");
+        ui->lineEdit->setText("1");
+    } else {
+        ui->label_1->setText("Выход из\nполя!");
+        // и переходим на кнопку "COLOR" программно
+        ui->colorButton->setFocus();
+    }
+
+}
+

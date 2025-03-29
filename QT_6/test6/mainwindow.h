@@ -24,6 +24,8 @@ private slots:
 
     void on_colorButton_clicked();
 
+    void on_lineEdit_editingFinished();
+
 private:
     Ui::MainWindow *ui;
 };

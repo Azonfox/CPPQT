@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>650</width>
-    <height>350</height>
+    <height>383</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -105,9 +105,9 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QPushButton" name="pushButton_4">
+         <widget class="QPushButton" name="colorButton">
           <property name="text">
-           <string>PushButton</string>
+           <string>COLOR</string>
           </property>
          </widget>
         </item>
@@ -140,7 +140,21 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QLabel" name="label_1">
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+            <italic>true</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Label_1</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton1">
           <property name="text">
            <string>Моя Button</string>
           </property>
@@ -276,6 +290,9 @@
         <property name="text">
          <string>Выход</string>
         </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -329,12 +346,12 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>300</x>
-     <y>381</y>
+     <x>557</x>
+     <y>190</y>
     </hint>
     <hint type="destinationlabel">
-     <x>627</x>
-     <y>78</y>
+     <x>600</x>
+     <y>80</y>
     </hint>
    </hints>
   </connection>

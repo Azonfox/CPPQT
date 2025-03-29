@@ -260,7 +260,7 @@
      </spacer>
     </item>
     <item row="0" column="1">
-     <widget class="QGroupBox" name="">
+     <widget class="QGroupBox" name="groupBox">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <layout class="QVBoxLayout" name="verticalLayout">
@@ -419,12 +419,28 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>557</x>
-     <y>190</y>
+     <x>643</x>
+     <y>367</y>
     </hint>
     <hint type="destinationlabel">
      <x>600</x>
      <y>80</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>lineEdit</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>157</x>
+     <y>52</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>135</x>
+     <y>287</y>
     </hint>
    </hints>
   </connection>

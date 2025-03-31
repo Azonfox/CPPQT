@@ -6,6 +6,11 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    // manual_ управление сигналом без QT-Designer
+    // При автоматическом названия on_...
+    connect(ui->FocusButton, &QPushButton::clicked,
+        this, &MainWindow::manual_FocusButton_clicked);
+
     // Начинаем с поля ввода
     ui->lineEdit->setFocus();
 }
@@ -21,7 +26,7 @@ MainWindow::~MainWindow()
 // Добавляем сюда наш код по типу VFP.
 // А в самом ui файле графически стрелками делаем простейшие
 // соединения сигналов+слотов, как у нас кнопка для закрытия окна.
-void MainWindow::on_pushButton1_clicked()
+void MainWindow::on_TextButton_clicked()
 {
     // При нажатии на кнопку pushButton1  "Моя Button"
     // выводим на терминал текст ...
@@ -56,6 +61,14 @@ void MainWindow::on_lineEdit_editingFinished()
         // и переходим на кнопку "COLOR" программно
         ui->colorButton->setFocus();
     }
-
 }
 
+// Это для Ручного управления через connect(...
+// При нажатии на кнопку FocusButton
+// переходим на текстовае поле и меняем текст
+void MainWindow::manual_FocusButton_clicked()
+{
+        ui->lineEdit->setFocus();
+        ui->lineEdit->setText("FocusButton");
+        qDebug() << "Фокус установлен!";
+}

@@ -16,15 +16,13 @@ public:
     ~MainWindow();
 
 private slots:
-
     // В ui Designer на этой кнопке ПКМ и "Перейти к слоту..."
     // Тогда получаем этот код здесь и в mainwindow.cpp файле
     // Добавляем наш код по типу VFP в mainwindow.cpp
-    void on_pushButton1_clicked();
-
+    void on_TextButton_clicked();
     void on_colorButton_clicked();
-
     void on_lineEdit_editingFinished();
+    void manual_FocusButton_clicked();
 
 private:
     Ui::MainWindow *ui;

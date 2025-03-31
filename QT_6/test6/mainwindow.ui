@@ -171,7 +171,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="ExitButton">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
           <horstretch>9</horstretch>
@@ -265,7 +265,7 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="FocusButton">
            <property name="text">
             <string>Фокус на Поле</string>
            </property>
@@ -373,9 +373,9 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton1">
+          <widget class="QPushButton" name="TextButton">
            <property name="text">
-            <string>Моя Button</string>
+            <string>Текст</string>
            </property>
           </widget>
          </item>
@@ -401,9 +401,9 @@
  <tabstops>
   <tabstop>lineEdit</tabstop>
   <tabstop>colorButton</tabstop>
-  <tabstop>pushButton1</tabstop>
-  <tabstop>pushButton_2</tabstop>
-  <tabstop>pushButton</tabstop>
+  <tabstop>TextButton</tabstop>
+  <tabstop>ExitButton</tabstop>
+  <tabstop>FocusButton</tabstop>
   <tabstop>checkBox</tabstop>
   <tabstop>radioButton</tabstop>
   <tabstop>radioButton_2</tabstop>
@@ -413,7 +413,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton_2</sender>
+   <sender>ExitButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>close()</slot>
@@ -425,22 +425,6 @@
     <hint type="destinationlabel">
      <x>600</x>
      <y>80</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
-   <receiver>lineEdit</receiver>
-   <slot>setFocus()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>157</x>
-     <y>52</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>135</x>
-     <y>287</y>
     </hint>
    </hints>
   </connection>

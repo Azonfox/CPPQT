@@ -10,6 +10,9 @@ MainWindow::MainWindow(QWidget *parent)
     // При автоматическом названия on_...
     connect(ui->FocusButton, &QPushButton::clicked,
         this, &MainWindow::manual_FocusButton_clicked);
+    // Для тогоже сигнала второй отладочный обработчик
+    connect(ui->FocusButton, &QPushButton::clicked,
+        this, &MainWindow::manual_FocusButton_clicked_debug);
 
     // Начинаем с поля ввода
     ui->lineEdit->setFocus();
@@ -36,10 +39,15 @@ void MainWindow::on_TextButton_clicked()
 }
 
 // При нажатии на кнопку colorButton  "COLOR"
-// меняем цвет надписи
+// меняем цвет надписи на другой
 void MainWindow::on_colorButton_clicked()
 {
-    ui->label_1->setStyleSheet("color: red; font-weight: bold;");
+    QColor textColor=ui->label_1->palette().color(QPalette::WindowText);
+    qDebug() << "Цвет текста " << textColor.name();
+    if(textColor.name()=="#ff0000")
+        ui->label_1->setStyleSheet("color: blue; font-weight: bold;");
+    else
+        ui->label_1->setStyleSheet("color: red; font-weight: bold;");
 }
 
 // Проверяем выход из поля (типа Valid VFP):
@@ -70,5 +78,11 @@ void MainWindow::manual_FocusButton_clicked()
 {
         ui->lineEdit->setFocus();
         ui->lineEdit->setText("FocusButton");
-        qDebug() << "Фокус установлен!";
+        qDebug() << "Фокус первый обработчик";
 }
+// Для тогоже сигнала второй обработчик
+void MainWindow::manual_FocusButton_clicked_debug()
+{
+        qDebug() << "Фокус debug обработчик--------";
+}
+

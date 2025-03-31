@@ -23,6 +23,7 @@ private slots:
     void on_colorButton_clicked();
     void on_lineEdit_editingFinished();
     void manual_FocusButton_clicked();
+    void manual_FocusButton_clicked_debug();
 
 private:
     Ui::MainWindow *ui;

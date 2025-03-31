@@ -25,6 +25,8 @@ private slots:
     void manual_FocusButton_clicked();
     void manual_FocusButton_clicked_debug();
 
+    void on_dialogButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

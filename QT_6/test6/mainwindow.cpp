@@ -1,3 +1,4 @@
+#include "mydialog.h"
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
@@ -10,12 +11,15 @@ MainWindow::MainWindow(QWidget *parent)
     // При автоматическом названия on_...
     connect(ui->FocusButton, &QPushButton::clicked,
         this, &MainWindow::manual_FocusButton_clicked);
-    // Для тогоже сигнала второй отладочный обработчик
+    // Для того-же сигнала второй отладочный обработчик
     connect(ui->FocusButton, &QPushButton::clicked,
         this, &MainWindow::manual_FocusButton_clicked_debug);
 
     // Начинаем с поля ввода
     ui->lineEdit->setFocus();
+
+    // Устанавливаем цвет фона
+    //this->setStyleSheet("background-color: green;");
 }
 
 MainWindow::~MainWindow()
@@ -39,7 +43,7 @@ void MainWindow::on_TextButton_clicked()
 }
 
 // При нажатии на кнопку colorButton  "COLOR"
-// меняем цвет надписи на другой
+// читаем и меняем цвет надписи на другой
 void MainWindow::on_colorButton_clicked()
 {
     QColor textColor=ui->label_1->palette().color(QPalette::WindowText);
@@ -80,9 +84,21 @@ void MainWindow::manual_FocusButton_clicked()
         ui->lineEdit->setText("FocusButton");
         qDebug() << "Фокус первый обработчик";
 }
-// Для тогоже сигнала второй обработчик
+// Для того-же сигнала второй обработчик
 void MainWindow::manual_FocusButton_clicked_debug()
 {
         qDebug() << "Фокус debug обработчик--------";
+}
+
+void MainWindow::on_dialogButton_clicked()
+{
+    qDebug() << "DIALOG WINDOW";
+    myDialog dialog(this);
+    // Передаем в диалоговое окно текст и цвет текста
+    dialog.setLabelText("Передан текст и цвет");
+    dialog.setLabelColor("color: red; font-weight: bold");
+
+    dialog.exec(); // Модальное
+//    dialog.show(); // nnnn
 }
 

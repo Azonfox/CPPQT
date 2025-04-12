@@ -27,11 +27,11 @@
 #include <QFileDialog>
 #include <QPrintDialog>
 
-#include <QPageSize>
-#include <QPageLayout>
-#include <QPdfWriter>
-#include <QPainter>
 #include <QFontDatabase>
+//#include <QPageSize>
+//#include <QPageLayout>
+//#include <QPdfWriter>
+//#include <QPainter>
 
 
 QSqlDatabase setupDatabase() {
@@ -45,12 +45,13 @@ QSqlDatabase setupDatabase() {
 
 
 QString generateHtmlReport(QSqlTableModel *model) {
-    QString html = "<html><body style='margin: 10px;'>";
-    html += "<h2>Отчёт: Список людей</h2>";
-    html +="<b><font face='Arial' size='7' color='red'> Azfox </font></b>";
+    QString html = "<html><body style='margin: 5px;'>";
+    html += "<h2>Отчёт: Список вечеринки</h2>";
+    html +="<b><i><font face='Arial' size='7' color='red'> Azfox </font></i></b>";
     html += "<table width='100%' border='1' cellspacing='0' cellpadding='4'>";
     html += "<tr style='font-family: Arial; font-size: 8pt;'>";
-    html += "<th>ID</th><th>Имя</th><th>Возраст</th></tr>";
+    html += "<th>ID</th><th>Имя</th>";
+    html +="<th style='white-space: nowrap; min-width: 120px;'> Возраст</th></tr>";
     for (int row = 0; row < model->rowCount(); ++row) {
         html += "<tr style='font-family: Courier; font-size: 10pt;'>";
         html += "<td>" + model->data(model->index(row, 0)).toString() + "</td>";
@@ -107,6 +108,8 @@ void exportPdf(QSqlTableModel *model) {
     // Общие шрифты документа
     QFont defaultFont("Arial",10);
     doc.setDefaultFont(defaultFont);
+
+    // Показать в терминале все шрифты системы
     QFontDatabase database;
        qDebug()<< database.families();
 

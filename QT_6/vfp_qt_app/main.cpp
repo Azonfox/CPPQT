@@ -27,6 +27,13 @@
 #include <QFileDialog>
 #include <QPrintDialog>
 
+#include <QPageSize>
+#include <QPageLayout>
+#include <QPdfWriter>
+#include <QPainter>
+#include <QFontDatabase>
+
+
 QSqlDatabase setupDatabase() {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("sample.db");
@@ -36,17 +43,47 @@ QSqlDatabase setupDatabase() {
     return db;
 }
 
+
 QString generateHtmlReport(QSqlTableModel *model) {
-    QString html = "<h2>Отчёт: Список людей</h2><table border='1' cellspacing='0' cellpadding='4'>";
-    html += "<tr><th>ID</th><th>Имя</th><th>Возраст</th></tr>";
+    QString html = "<html><body style='margin: 10px;'>";
+    html += "<h2>Отчёт: Список людей</h2>";
+    html +="<b><font face='Arial' size='7' color='red'> Azfox </font></b>";
+    html += "<table width='100%' border='1' cellspacing='0' cellpadding='4'>";
+    html += "<tr style='font-family: Arial; font-size: 8pt;'>";
+    html += "<th>ID</th><th>Имя</th><th>Возраст</th></tr>";
     for (int row = 0; row < model->rowCount(); ++row) {
-        html += "<tr>";
+        html += "<tr style='font-family: Courier; font-size: 10pt;'>";
         html += "<td>" + model->data(model->index(row, 0)).toString() + "</td>";
         html += "<td>" + model->data(model->index(row, 1)).toString() + "</td>";
         html += "<td>" + model->data(model->index(row, 2)).toString() + "</td>";
+
+        html += "<td>" + model->data(model->index(row, 0)).toString() + "</td>";
+        html += "<td>" + model->data(model->index(row, 1)).toString() + "</td>";
+        html += "<td>" + model->data(model->index(row, 2)).toString() + "</td>";
+
+        html += "<td>" + model->data(model->index(row, 0)).toString() + "</td>";
+        html += "<td>" + model->data(model->index(row, 1)).toString() + "</td>";
+        html += "<td>" + model->data(model->index(row, 2)).toString() + "</td>";
+
+        html += "<td>" + model->data(model->index(row, 0)).toString() + "</td>";
+        html += "<td>" + model->data(model->index(row, 1)).toString() + "</td>";
+        html += "<td>" + model->data(model->index(row, 2)).toString() + "</td>";
+
+        html += "<td>" + model->data(model->index(row, 0)).toString() + "</td>";
+        html += "<td>" + model->data(model->index(row, 1)).toString() + "</td>";
+        html += "<td>" + model->data(model->index(row, 2)).toString() + "</td>";
+
+/*      html += "<td>" + model->data(model->index(row, 0)).toString() + "</td>";
+        html += "<td>" + model->data(model->index(row, 1)).toString() + "</td>";
+        html += "<td>" + model->data(model->index(row, 2)).toString() + "</td>";
+
+        html += "<td>" + model->data(model->index(row, 0)).toString() + "</td>";
+        html += "<td>" + model->data(model->index(row, 1)).toString() + "</td>";
+        html += "<td>" + model->data(model->index(row, 2)).toString() + "</td>";
+*/
         html += "</tr>";
     }
-    html += "</table>";
+    html += "</table></body></html>";
     return html;
 }
 
@@ -64,15 +101,49 @@ void printReport(QSqlTableModel *model) {
 void exportPdf(QSqlTableModel *model) {
     QTextDocument doc;
     doc.setHtml(generateHtmlReport(model));
+    // Настроим размер листа и общие поля
+    doc.setPageSize(QSizeF(210*2.83465,297*2.83465));
+    doc.setDocumentMargin(10);
+    // Общие шрифты документа
+    QFont defaultFont("Arial",10);
+    doc.setDefaultFont(defaultFont);
+    QFontDatabase database;
+       qDebug()<< database.families();
+
+    // Вывод в HTML файл для контроля PDF принтера
+    if(true){
+        QFile debugFile("debug.html");
+        debugFile.open(QIODevice::WriteOnly);
+        debugFile.write(doc.toHtml().toUtf8());
+        debugFile.close();
+    }
 
     QString fileName = QFileDialog::getSaveFileName(nullptr, "Сохранить как PDF", "", "PDF Files (*.pdf)");
     if (!fileName.isEmpty()) {
         QPrinter printer(QPrinter::HighResolution);
         printer.setOutputFormat(QPrinter::PdfFormat);
         printer.setOutputFileName(fileName);
-        doc.print(&printer);
+
+        // Разные способы изменения полей
+         // Размер = контенту
+        printer.setPageSize(QPageSize(QPageSize::A4));
+        // Задаем поля в миллиметрах
+        printer.setPageMargins(QMarginsF(25,0,0,0),QPageLayout::Millimeter);
+
+        // на весь лист, отменяя поля
+        //printer.setFullPage(true);
+
+        // Точная печать и прочее
+//        QSizeF contentSize = doc.size();
+//        printer.setPageSize(QPageSize(contentSize,QPageSize::Point));
+
+        doc.print(&printer); // Выполнить
+        // Закрыть приложение при отладке сразу же, чтоб не болталось
+        QCoreApplication::quit();
     }
 }
+
+
 
 void addRecord(QSqlTableModel *model) {
     QDialog dialog;

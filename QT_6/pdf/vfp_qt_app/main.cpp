@@ -36,7 +36,7 @@
 
 QSqlDatabase setupDatabase() {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("sample.db");
+    db.setDatabaseName("/home/azfox/PROJECT/CPPQT/QT_6/pdf/vfp_qt_app/DOC/sample.db");
     db.open();
     QSqlQuery query;
     query.exec("CREATE TABLE IF NOT EXISTS people (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, age INTEGER)");

@@ -1,0 +1,197 @@
+Вот полный пример простейшего Qt 6.4.2 приложения, которое создает PDF-файл программно — без HTML и CSS. Используется QPdfWriter и QPainter. Создается один лист с полями, рамками и четырьмя текстовыми переменными.
+
+Структура:
+
+Одна кнопка на окне.
+
+При нажатии — генерируется PDF output.pdf.
+
+Одна переменная сверху, три в ряд снизу.
+
+Рамки и отступы нарисованы вручную.
+
+Поля страницы можно задать в коде.
+
+
+
+---
+
+main.cpp
+
+#include <QApplication>
+#include <QPushButton>
+#include <QVBoxLayout>
+#include <QWidget>
+#include <QPdfWriter>
+#include <QPainter>
+#include <QFileDialog>
+#include <QPageSize>
+
+void generatePdf(const QString &filePath) {
+    // Настройки полей (в миллиметрах)
+    const int leftMargin = 20;
+    const int topMargin = 20;
+    const int rightMargin = 20;
+    const int bottomMargin = 20;
+
+    // Размер листа A4
+    QPdfWriter writer(filePath);
+    writer.setPageSize(QPageSize(QPageSize::A4));
+    writer.setPageMargins(QMarginsF(leftMargin, topMargin, rightMargin, bottomMargin), QPageLayout::Millimeter);
+
+    QPainter painter(&writer);
+
+    // Текстовые переменные
+    QString topText = "Верхний текст";
+    QString var1 = "Переменная 1";
+    QString var2 = "Переменная 2";
+    QString var3 = "Переменная 3";
+
+    // Получаем рабочую область
+    QRectF pageRect = writer.pageLayout().paintRectPixels(writer.resolution());
+
+    // Настройки шрифта
+    QFont font("Arial", 14);
+    painter.setFont(font);
+
+    // Верхний текст
+    QRect topBox(pageRect.left(), pageRect.top(), pageRect.width(), 50);
+    painter.drawRect(topBox);
+    painter.drawText(topBox, Qt::AlignCenter, topText);
+
+    // Три текста в один ряд
+    int spacing = 20;
+    int boxWidth = (pageRect.width() - 2 * spacing) / 3;
+    int boxHeight = 50;
+    int startY = topBox.bottom() + 50;
+
+    QRect box1(pageRect.left(), startY, boxWidth, boxHeight);
+    QRect box2(box1.right() + spacing, startY, boxWidth, boxHeight);
+    QRect box3(box2.right() + spacing, startY, boxWidth, boxHeight);
+
+    painter.drawRect(box1);
+    painter.drawRect(box2);
+    painter.drawRect(box3);
+
+    painter.drawText(box1, Qt::AlignCenter, var1);
+    painter.drawText(box2, Qt::AlignCenter, var2);
+    painter.drawText(box3, Qt::AlignCenter, var3);
+
+    painter.end();
+}
+
+int main(int argc, char *argv[]) {
+    QApplication app(argc, argv);
+
+    QWidget window;
+    window.setWindowTitle("PDF Generator");
+
+    QPushButton *button = new QPushButton("Создать PDF");
+    QObject::connect(button, &QPushButton::clicked, [&]() {
+        QString path = QFileDialog::getSaveFileName(&window, "Сохранить PDF", "", "PDF файлы (*.pdf)");
+        if (!path.isEmpty()) {
+            generatePdf(path);
+        }
+    });
+
+    QVBoxLayout *layout = new QVBoxLayout;
+    layout->addWidget(button);
+    window.setLayout(layout);
+    window.resize(300, 100);
+    window.show();
+
+    return app.exec();
+}
+
+
+---
+
+CMakeLists.txt
+
+cmake_minimum_required(VERSION 3.16)
+project(PdfGeneratorQt6)
+
+set(CMAKE_CXX_STANDARD 17)
+
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
+
+add_executable(PdfGenerator main.cpp)
+target_link_libraries(PdfGenerator Qt6::Core Qt6::Gui Qt6::Widgets)
+
+
+---
+
+Как собрать:
+
+mkdir build
+cd build
+cmake ..
+make
+./PdfGenerator
+
+---------
+
+Нет, модуль QtPdf подключать не нужно, если ты используешь QPdfWriter. Он входит в модуль Qt6Gui, который ты уже подключаешь:
+
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
+
+И в target_link_libraries:
+
+target_link_libraries(PdfGenerator Qt6::Core Qt6::Gui Qt6::Widgets)
+
+---
+
+Когда нужен QtPdf?
+
+Модуль QtPdf используется для отображения и чтения PDF-файлов в приложении (например, через QPdfDocument, QPdfView), но не для генерации PDF.
+---
+Вывод:
+PDF создавать программно — достаточно QPdfWriter из QtGui
+QtPdf не нужен, если только ты не хочешь просматривать PDF внутри приложения
+----------
+
+А что лучше, pdf vs writer
+
+Хороший вопрос. Смотри кратко и по делу:
+---
+
+1. QPdfWriter (из QtGui) — лучше, если:
+
+Нужно генерировать PDF программно (рисовать с помощью QPainter)
+
+Требуется максимальная гибкость — рисуешь всё вручную (текст, линии, рамки, таблицы)
+
+Подходит для отчетов, форм, печатных документов
+
+Не требует дополнительных модулей — работает из коробки с QtGui
+
+
+Минусы:
+
+Всё рисуешь сам — нужно заботиться о координатах, выравнивании и т.д.
+---
+
+2. QtPdf (модуль QtPdf) — лучше, если:
+
+Хочешь просматривать готовые PDF прямо в приложении
+
+Нужно загружать и показывать PDF-документы, страницы, миниатюры
+
+Используется вьюшка QPdfView, документ QPdfDocument
+
+Минусы:
+
+Нельзя создавать PDF — только просматривать
+
+Требуется отдельный модуль QtPdf
+---
+
+Итог:
+---
+Для твоей задачи — однозначно QPdfWriter, ты всё делаешь программно.
+Если когда-нибудь захочешь сделать просмотр PDF в своём приложении — вот тогда уже QtPdf.
+
+
+
+
+

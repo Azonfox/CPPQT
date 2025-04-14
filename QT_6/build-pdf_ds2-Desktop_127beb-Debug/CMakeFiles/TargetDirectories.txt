@@ -1,8 +1,0 @@
-/home/azfox/PROJECT/CPPQT/QT_6/build-pdf_ds2-Desktop_127beb-Debug/CMakeFiles/pdf_ds2.dir
-/home/azfox/PROJECT/CPPQT/QT_6/build-pdf_ds2-Desktop_127beb-Debug/CMakeFiles/edit_cache.dir
-/home/azfox/PROJECT/CPPQT/QT_6/build-pdf_ds2-Desktop_127beb-Debug/CMakeFiles/rebuild_cache.dir
-/home/azfox/PROJECT/CPPQT/QT_6/build-pdf_ds2-Desktop_127beb-Debug/CMakeFiles/list_install_components.dir
-/home/azfox/PROJECT/CPPQT/QT_6/build-pdf_ds2-Desktop_127beb-Debug/CMakeFiles/install.dir
-/home/azfox/PROJECT/CPPQT/QT_6/build-pdf_ds2-Desktop_127beb-Debug/CMakeFiles/install/local.dir
-/home/azfox/PROJECT/CPPQT/QT_6/build-pdf_ds2-Desktop_127beb-Debug/CMakeFiles/install/strip.dir
-/home/azfox/PROJECT/CPPQT/QT_6/build-pdf_ds2-Desktop_127beb-Debug/CMakeFiles/pdf_ds2_autogen.dir

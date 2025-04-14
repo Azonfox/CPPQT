@@ -1,0 +1,36 @@
+Чтобы сразу открыть PDF-файл после его создания в Qt, ты можешь использовать QDesktopServices::openUrl() — он откроет PDF в системной программе просмотра (например, Okular, Evince, Preview и т.п.):
+
+#include <QDesktopServices>
+#include <QUrl>
+
+// После создания PDF-файла:
+QDesktopServices::openUrl(QUrl::fromLocalFile("/полный/путь/к/твоему/файлу.pdf"));
+
+Это будет работать на всех платформах — macOS, Linux, Windows. Главное — убедиться, что путь к файлу корректный, и файл действительно существует.
+
+Если путь к PDF у тебя в переменной, например:
+
+QString filename = "/путь/к/файлу.pdf";
+QDesktopServices::openUrl(QUrl::fromLocalFile(filename));
+
+Добавь это сразу после завершения печати/сохранения — и PDF откроется автоматически.
+ QDesktopServices::openUrl(QUrl::fromLocalFile(...)) запускает системное приложение по умолчанию для открытия данного типа файла — в данном случае, PDF.
+
+Например:
+
+На Linux — откроется Evince, Okular, Xreader и т.п., в зависимости от окружения и настроек.
+
+На macOS — скорее всего Preview.app.
+
+На Windows — Edge, Adobe Reader или другая ассоциированная программа.
+
+
+Если хочешь, можно сделать проверку на успешность открытия, но обычно этого достаточно:
+
+bool success = QDesktopServices::openUrl(QUrl::fromLocalFile(filename));
+if (!success) {
+    qWarning("Не удалось открыть PDF-файл");
+}
+
+Хочешь пример кода в контексте QPrinter и QPdfWriter?
+

@@ -18,3 +18,7 @@ HEADERS += mainwindow.h
 FORMS += mainwindow.ui
 SOURCES += main.cpp mainwindow.cpp
 QT+=gui widgets
+
+#For Mac12 QT5142 без этих двух волшебных строк запускается в трее и не работает
+#CONFIG+=sdk_no_version_check
+#QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.15

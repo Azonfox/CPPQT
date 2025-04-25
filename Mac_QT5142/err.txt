@@ -1,0 +1,6 @@
+admin@MacBook test1 % /Users/admin/Qt5142/5.14.2/clang_64/bin/qmake test1.pro
+Project WARNING: Qt has only been tested with version 10.15 of the platform SDK, you're using 12.3.
+Project WARNING: This is an unsupported configuration. You may experience build issues, and by using
+Project WARNING: the 12.3 SDK you are opting in to new features that Qt has not been prepared for.
+Project WARNING: Please downgrade the SDK you use to build your app to version 10.15, or configure
+Project WARNING: with CONFIG+=sdk_no_version_check when running qmake to silence this warning.
